@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand" routerLink=""><img src="{{imageUrl}}" class="img-fluid" width="100" alt="Formalab"></a>
+
+  
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+  
+      </ul>
+  
+      <form class="form-inline my-2 my-lg-0">
+        <button *ngIf="isConnect" class="btn btn-outline-secondary mr-sm-2" [routerLink]="[ '/connect' ]">Se connecter</button>
+        <button *ngIf="isSubscribe" class="btn btn-outline-dark mr-sm-2" [routerLink]="[ '/subscribe']">S'inscrire</button>
+        <button *ngIf="isLogout" class="btn btn-outline-danger my-2 my-sm-0" [routerLink]="[ '/' ]">Se Déconnecter</button>
+      </form>
+      
+    </div>
+</nav>  

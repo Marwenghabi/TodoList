@@ -1,0 +1,27 @@
+<div *ngIf="todos.length > 0 ; then todoList else noTodos"></div>
+
+<ng-template #todoList>
+  <table border="1">
+    <tr>
+      <td>Description</td>
+      <td>Action</td>
+    </tr>
+    <tr *ngFor="let todo of todos; index as i">
+      <td>{{ todo.description }}</td>
+      <td><button class="btn btn-outline-danger" (click)="remove(todo)">Supprimer</button></td>
+    </tr>
+  </table>
+</ng-template>
+
+<ng-template #noTodos>
+  No todos yet
+</ng-template>
+
+
+
+
+
+ <!-- <li>{{todo.description | uppercase}}</li>
+  <li>{{todo.rating | number}}</li>
+  <li>{{todo.price | currency:'USD'}}</li>
+  <li>{{todo.date | date:'shortDate'}}</li>-->

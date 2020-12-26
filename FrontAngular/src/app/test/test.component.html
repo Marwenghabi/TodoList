@@ -1,0 +1,17 @@
+<div class="container">
+  <p [textContent]="title"  [style.backgroundColor]="abc ? 'blue' : 'white'">  </p>
+<img [src]="imgUrl" width="100">
+<br>
+<input type="text"  [(ngModel)]="entrepriseName" (keyup.enter)="myFunction()"><br>
+<button class="btn btn-danger">click me</button>
+<br>
+<table border="1">
+  <tr>
+    <td>Nom</td>
+    <td>Prenom</td>
+  </tr>
+  <tr>
+    <td [attr.colspan]="value">marwen</td>
+  </tr>
+</table>
+</div>

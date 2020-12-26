@@ -1,0 +1,127 @@
+<app-navigate></app-navigate>
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="inscription()">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="firstname">Nom</label>
+        <input
+            formControlName="firstname" 
+            id="firstname"
+            type="text" 
+            class="form-control">
+            <div *ngIf="firstname.touched && firstname.invalid" 
+            class="alert alert-danger">
+              <div *ngIf="firstname.errors.required">
+                Le nom est obligatoire
+              </div>
+              <div *ngIf="firstname.errors.pattern">
+                Au moins 1 caractére et Uniquement des caractéres alphabétiques
+              </div>
+            </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="lastname">Prenom</label>
+        <input 
+            formControlName="lastname" 
+            id="lastname"
+            type="text" 
+            class="form-control">
+            <div *ngIf="lastname.touched && lastname.invalid" 
+            class="alert alert-danger">
+              <div *ngIf="lastname.errors.required">
+                Le prenom est obligatoire
+              </div>
+              <div *ngIf="lastname.errors.pattern">
+                Au moins 1 caractére et Uniquement des caractéres alphabétiques
+              </div>
+            </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="email">Email</label>
+        <input 
+            formControlName="email" 
+            id="email"
+            type="email" 
+            class="form-control" >
+            <div *ngIf="email.invalid && email.touched">
+              <div *ngIf="email.errors.required" class="alert alert-danger">
+                  Email est obligatoire
+              </div>
+              <div *ngIf="email.errors && !email.errors.required" class="alert alert-danger">
+                  Email est invalide
+              </div>
+          </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="tel">Numéro Téléphone</label>
+        <input 
+            formControlName="tel" 
+            id="tel"
+            type="text" 
+            class="form-control">
+            <div *ngIf="tel.invalid && tel.touched">
+
+              <div *ngIf="tel.errors.required" class="alert alert-danger">
+                  N° Téléphone est obligatoire
+              </div>
+
+              <div *ngIf="tel.errors.minlength" class="alert alert-danger">
+                  N° Téléphone est de 8 chiffres au minimm
+              </div>
+
+              <div *ngIf="tel.errors.maxlength" class="alert alert-danger">
+                  N° Téléphone est de 13 chiffres au maximum
+              </div>
+
+              <div *ngIf="tel.errors.pattern" class="alert alert-danger">
+                  N° Téléphone est un nombre
+              </div>
+            </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="pass">Mot de passe</label>
+        <input 
+            formControlName="pass" 
+            id="pass"
+            type="password" 
+            class="form-control">
+            <div *ngIf="pass.touched && pass.invalid" 
+            class="alert alert-danger">
+              <div *ngIf="pass.errors.required">
+                Le Mot de passe est obligatoire
+              </div>
+              <div *ngIf="pass.errors.minlength">
+                Le Mot de passe doit comportre 
+                {{ pass.errors.minlength.requiredLength}} 
+                caractaires minimum
+              </div>
+            </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="repass">Repeter Mot de passe</label>
+        <input 
+            formControlName="repass" 
+            id="repass"
+            type="password" 
+            class="form-control">
+            <div *ngIf="repass.touched && repass.invalid">
+              <div *ngIf="repass.errors.required" class="alert alert-danger">
+                  Ce champ est obligatoire
+              </div>
+          </div>
+          
+          <div 
+          *ngIf="repass.valid && form.invalid && form.errors?.passwordShouldMatch" 
+          class="alert alert-danger">
+              Les mots de passe ne correspondent pas
+          </div>
+      </div>
+    </div>
+    <input type="submit" class="btn btn-primary" value="S'inscrire" [disabled]="form.invalid" >
+  </form>
+</div>
+<app-footer></app-footer>
